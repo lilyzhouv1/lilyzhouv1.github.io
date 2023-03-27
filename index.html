@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Note: Most of the classes have came from tailwindcss.com/docs-->
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    
+    <title> Budget Calculator </title>
+
+</head>
+<body class="bg-red-300">
+
+    <!--Header-->
+    <header class="bg-blue-500 border-b-4 border-blue-600">
+
+        <h1 class="text-4xl font-semibold text-white p-4 text-center">Budget Calculator App</h1>
+
+    </header>
+
+    <!--Container-->
+    <div class="Container mx-auto">
+
+        <!--Input Section-->
+        <div class="mt-10">
+            <label for="enter_money" class="text-2xl block text-center">Enter the amount of money you want to manage </label>
+            <input id="enter_money" type="text" class="shadow appearence-none border border-gray-500 rounded px-5 py-2 block mx-auto mt-5">
+
+            <p id="error" class="hidden text-red-500 text-sm italic text-center mt-3">Please enter a valid amount</p>
+
+        </div>
+
+        <!--Manage Budget Section-->
+        <div id="manage_div" class="hidden mt-10">
+            <p class="text-xl text-center font-semibold"> How would you like to divide your money? </p>
+
+            <div class="flex mt-8">
+                <div class="flex-grow">
+                    <label for="RoomRent"> RoomRent(%)</label>
+                    <input type="text" id="RoomRent" class="shadow appearence-none border border-gray-500 rounded py-1">
+                </div>
+
+                <div class="flex-grow">
+                    <label for="Accessories"> Accessories(%)</label>
+                    <input type="text" id="Accessories" class="shadow appearence-none border border-gray-500 rounded py-1">
+                </div>
+
+                <div class="flex-grow">
+                    <label for="Emergency"> Emergency(%)</label>
+                    <input type="text" id="Emergency" class="shadow appearence-none border border-gray-500 rounded py-1">
+                </div>
+
+                <div class="flex-grow">
+                    <label for="Saving"> Saving(%)</label>
+                    <input type="text" id="Saving" class="shadow appearence-none border border-gray-500 rounded py-1">
+                </div>
+
+            </div>
+
+            <!--Error message if roomrent, accessories, emergency, or saving is invalid-->
+            <p id="error_manage" class="text-red-500 text-sm italic text-center mt-3"></p>
+
+
+            <div>
+                <button id="evaluate" class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-color-500 rounded mt-10 block mx-auto">
+                    Evaluate
+                </button>
+            </div>
+
+            <!--loading gif image-->
+            <img id="loader" src="images/loading.gif" class="hidden block mx-auto">
+
+             <!--Result Section-->
+             <div id="result_section" class="hidden mt-10">
+                <p class="text-2xl text-center font-semibold"> Here's how you should manage your money </p>
+
+                <div class="flex mt-5">
+
+                    <div class="flex-grow bg-blue-600 shadow-lg px-6 py-4 rounded mx-5">
+                        <h1 class="font-bold text-white text-xl">Room Rent</h1>
+                        <h1 id="show_room" class="text-white font-semibold text-2xl"></h1>
+                    </div>
+
+                    <div class="flex-grow bg-pink-600 shadow-lg px-6 py-4 rounded mx-5">
+                        <h1 class="font-bold text-white text-xl">Accessories</h1>
+                        <h1 id="show_access" class="text-white font-semibold text-2xl"></h1>
+                    </div>
+
+                    <div class="flex-grow bg-red-600 shadow-lg px-6 py-4 rounded mx-5">
+                        <h1 class="font-bold text-white text-xl">Emergency</h1>
+                        <h1 id="show_emergency" class="text-white font-semibold text-2xl"></h1>
+                    </div>
+
+                    <div class="flex-grow bg-purple-600 shadow-lg px-6 py-4 rounded mx-5">
+                        <h1 class="font-bold text-white text-xl">Saving</h1>
+                        <h1 id="show_save" class="text-white font-semibold text-2xl"></h1>
+                    </div>
+
+                </div>
+
+                <button id="reset_button" class="bg-red-500 hover:bd-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded mt-5 block mx-auto">
+                    Reset
+                </button>
+
+             </div>
+            
+        </div>
+
+    </div>
+
+    <!--Connecting to Javascript-->
+    <script type="text/javascript" src="app.js"></script>
+
+</body>
+</html>
