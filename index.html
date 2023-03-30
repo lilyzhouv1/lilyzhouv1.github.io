@@ -4,108 +4,154 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    
     <!--Note: Most of the classes have came from tailwindcss.com/docs-->
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     
     <title> Budget Calculator </title>
 
 </head>
-<body class="bg-red-300">
+<body class="bg-teal-100">
 
     <!--Header-->
     <header class="bg-blue-500 border-b-4 border-blue-600">
 
-        <h1 class="text-4xl font-semibold text-white p-4 text-center">Budget Calculator App</h1>
+        <h1 class="text-4xl font-semibold text-white p-4 text-center">Monthly Budget Calculator</h1>
 
     </header>
 
     <!--Container-->
     <div class="Container mx-auto">
+        
+        <p class="text-blue-500 text-sm text-center mt-2 font-semibold"> Enter amounts rounded to the nearest dollar in the fields that apply to you. If it does not pertain to you, leave the cell as 0.</p>
+        <p class="text-blue-500 text-sm text-center font-semibold"> When entered, click Evaluate that will appear at the bottom of this page.</p>
+        <p id="error" class="hidden text-red-500 text-sm italic text-center mt-3">Please enter a valid amount</p>
 
-        <!--Input Section-->
+        <!--Income Section-->
         <div class="mt-10">
-            <label for="enter_money" class="text-2xl block text-center">Enter the amount of money you want to manage </label>
-            <input id="enter_money" type="text" class="shadow appearence-none border border-gray-500 rounded px-5 py-2 block mx-auto mt-5">
+            <h2 class="text-xl block text-center font-bold"> Income </h2>
+            
+            <label for="monthly_pay" class="text-base block text-center mt-3"> Monthly Pay </label>
+            <input id="monthly_pay" value="0" type="text" class="shadow appearence-none border border-gray-500 rounded px-5 block mx-auto">
+
+            <label for="monthly_other" class="text-base block text-center mt-3"> Monthly Other </label>
+            <input id="monthly_other" value="0" type="text" class="shadow appearence-none border border-gray-500 rounded px-5 block mx-auto">
+
+            <!--divide this by 12-->
+            <label for="annual_tax" class="text-base block text-center mt-3"> Annual Tax Return </label>
+            <input id="annual_tax" value="0" type="text" class="shadow appearence-none border border-gray-500 rounded px-5 block mx-auto">
+
+        </div>
+
+         <!--Monthly Expenses-->
+         <div id="monthly_expenses" class="mt-10">
+            <h2 class="text-xl block text-center font-bold"> Monthly Expenses </h2>
+            <label for="monthly_food" class="text-base block text-center mt-3"> Food (groceries, dining out, etc.) </label>
+            <input id="monthly_food" value="0" type="text" class="shadow appearence-none border border-gray-500 rounded px-5 block mx-auto">
+
+            <label for="monthly_clothes" class="text-base block text-center mt-3"> Clothing </label>
+            <input id="monthly_clothes" value="0" type="text" class="shadow appearence-none border border-gray-500 rounded px-5 block mx-auto">
+
+            <label for="monthly_rent" class="text-base block text-center mt-3"> Rent </label>
+            <input id="monthly_rent" value="0" type="text" class="shadow appearence-none border border-gray-500 rounded px-5 block mx-auto">
+
+            <label for="monthly_utilities" class="text-base block text-center mt-3"> Utilities (cell phone, cable, etc.) </label>
+            <input id="monthly_utilities" value="0" type="text" class="shadow appearence-none border border-gray-500 rounded px-5 block mx-auto">
+
+            <label for="monthly_transportation" class="text-base block text-center mt-3"> Transportation </label>
+            <input id="monthly_transportation" value="0" type="text" class="shadow appearence-none border border-gray-500 rounded px-5 block mx-auto">
+
+            <label for="monthly_health" class="text-base block text-center mt-3"> Health (insurance, medications) </label>
+            <input id="monthly_health" value="0" type="text" class="shadow appearence-none border border-gray-500 rounded px-5 block mx-auto">
+            
+            <label for="monthly_personal" class="text-base block text-center mt-3"> Personal (entertainment, hobbies) </label>
+            <input id="monthly_personal" value="0" type="text" class="shadow appearence-none border border-gray-500 rounded px-5 block mx-auto">
+
+            <label for="monthly_miscellaneous" class="text-base block text-center mt-3"> Miscellaneous </label>
+            <input id="monthly_miscellaneous" value="0" type="text" class="shadow appearence-none border border-gray-500 rounded px-5 block mx-auto">
 
             <p id="error" class="hidden text-red-500 text-sm italic text-center mt-3">Please enter a valid amount</p>
 
         </div>
 
-        <!--Manage Budget Section-->
-        <div id="manage_div" class="hidden mt-10">
-            <p class="text-xl text-center font-semibold"> How would you like to divide your money? </p>
+        <!--Annual Expenses Section-->
+        <!--Divide all of these by 12-->
+        <div class="mt-10">
+            <h2 class="text-xl block text-center font-bold"> Annual Expenses </h2>
+            
+            <label for="annual_tuition" class="text-base block text-center mt-3"> Tuition </label>
+            <input id="annual_tuition" value="0" type="text" class="shadow appearence-none border border-gray-500 rounded px-5 block mx-auto">
 
-            <div class="flex mt-8">
-                <div class="flex-grow">
-                    <label for="RoomRent"> RoomRent(%)</label>
-                    <input type="text" id="RoomRent" class="shadow appearence-none border border-gray-500 rounded py-1">
+            <label for="annual_car" class="text-base block text-center mt-3"> Car </label>
+            <input id="annual_car" value="0" type="text" class="shadow appearence-none border border-gray-500 rounded px-5 block mx-auto">
+
+            <label for="annual_vacation" class="text-base block text-center mt-3"> Vacation </label>
+            <input id="annual_vacation" value="0" type="text" class="shadow appearence-none border border-gray-500 rounded px-5 block mx-auto">
+
+            <label for="annual_other" class="text-base block text-center mt-3"> Other Annual Expenses</label>
+            <input id="annual_other" value="0" type="text" class="shadow appearence-none border border-gray-500 rounded px-5 block mx-auto">
+        </div>
+
+        <!--Monthly Savings Section-->
+        <div class="mt-10">
+            <h2 class="text-xl block text-center font-bold"> Monthly Savings </h2>
+            
+            <label for="saving_emergency" class="text-base block text-center mt-3"> Emergency Fund </label>
+            <input id="saving_emergency" value="0" type="text" class="shadow appearence-none border border-gray-500 rounded px-5 block mx-auto">
+
+            <label for="saving_investments" class="text-base block text-center mt-3"> Investments </label>
+            <input id="saving_investments" value="0" type="text" class="shadow appearence-none border border-gray-500 rounded px-5 block mx-auto">
+
+            <label for="saving_rrsp" class="text-base block text-center mt-3"> RRSP </label>
+            <input id="saving_rrsp" value="0" type="text" class="shadow appearence-none border border-gray-500 rounded px-5 block mx-auto">
+        </div>
+
+
+        <!--Evaluate section-->
+        <div>
+            <button id="evaluate2" class=" hidden bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-color-500 rounded mt-10 block mx-auto">
+                Evaluate
+            </button>
+        </div>
+
+        <!--loading gif image-->
+        <img id="loader" src="images/loading.gif" class="hidden block mx-auto">
+
+
+        <!--Results-->
+        <div id="results" class="hidden mt-10">
+            <p class="text-2xl text-center font-semibold"> Your Budget Review </p>
+
+                <div class="flex-grow bg-green-600 shadow-lg px-6 py-4 rounded mx-20 mt-3">
+                    <h1 class="font-bold text-white text-xl">Total Monthly Income</h1>
+                    <h1 id="show_income" class="text-white font-semibold text-2xl"></h1>
                 </div>
 
-                <div class="flex-grow">
-                    <label for="Accessories"> Accessories(%)</label>
-                    <input type="text" id="Accessories" class="shadow appearence-none border border-gray-500 rounded py-1">
+                <div class="flex-grow bg-teal-600 shadow-lg px-6 py-4 rounded mx-20 mt-3">
+                    <h1 class="font-bold text-white text-xl">Total Monthly Expenses</h1>
+                    <h1 id="show_Mexpenses" class="text-white font-semibold text-2xl"></h1>
                 </div>
 
-                <div class="flex-grow">
-                    <label for="Emergency"> Emergency(%)</label>
-                    <input type="text" id="Emergency" class="shadow appearence-none border border-gray-500 rounded py-1">
+                <div class="flex-grow bg-blue-600 shadow-lg px-6 py-4 rounded mx-20 mt-3">
+                    <h1 class="font-bold text-white text-xl">Total Annual Expenses</h1>
+                    <h1 id="show_Aexpenses" class="text-white font-semibold text-2xl"></h1>
                 </div>
 
-                <div class="flex-grow">
-                    <label for="Saving"> Saving(%)</label>
-                    <input type="text" id="Saving" class="shadow appearence-none border border-gray-500 rounded py-1">
+                <div class="flex-grow bg-yellow-600 shadow-lg px-6 py-4 rounded mx-20 mt-3">
+                    <h1 class="font-bold text-white text-xl">Total Monthly Savings</h1>
+                    <h1 id="show_savings" class="text-white font-semibold text-2xl"></h1>
                 </div>
 
-            </div>
-
-            <!--Error message if roomrent, accessories, emergency, or saving is invalid-->
-            <p id="error_manage" class="text-red-500 text-sm italic text-center mt-3"></p>
-
-
-            <div>
-                <button id="evaluate" class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-color-500 rounded mt-10 block mx-auto">
-                    Evaluate
-                </button>
-            </div>
-
-            <!--loading gif image-->
-            <img id="loader" src="images/loading.gif" class="hidden block mx-auto">
-
-             <!--Result Section-->
-             <div id="result_section" class="hidden mt-10">
-                <p class="text-2xl text-center font-semibold"> Here's how you should manage your money </p>
-
-                <div class="flex mt-5">
-
-                    <div class="flex-grow bg-blue-600 shadow-lg px-6 py-4 rounded mx-5">
-                        <h1 class="font-bold text-white text-xl">Room Rent</h1>
-                        <h1 id="show_room" class="text-white font-semibold text-2xl"></h1>
-                    </div>
-
-                    <div class="flex-grow bg-pink-600 shadow-lg px-6 py-4 rounded mx-5">
-                        <h1 class="font-bold text-white text-xl">Accessories</h1>
-                        <h1 id="show_access" class="text-white font-semibold text-2xl"></h1>
-                    </div>
-
-                    <div class="flex-grow bg-red-600 shadow-lg px-6 py-4 rounded mx-5">
-                        <h1 class="font-bold text-white text-xl">Emergency</h1>
-                        <h1 id="show_emergency" class="text-white font-semibold text-2xl"></h1>
-                    </div>
-
-                    <div class="flex-grow bg-purple-600 shadow-lg px-6 py-4 rounded mx-5">
-                        <h1 class="font-bold text-white text-xl">Saving</h1>
-                        <h1 id="show_save" class="text-white font-semibold text-2xl"></h1>
-                    </div>
-
+                <!--Under/Over Budget should be included-->
+                <div class="flex-grow bg-black shadow-lg px-6 py-4 rounded mx-20 mt-3">
+                    <h1 class="font-bold text-white text-xl">Under/Over Budget</h1>
+                    <h1 id="show_budget" class="text-white font-semibold text-2xl"></h1>
                 </div>
 
                 <button id="reset_button" class="bg-red-500 hover:bd-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded mt-5 block mx-auto">
                     Reset
                 </button>
 
-             </div>
-            
         </div>
 
     </div>
